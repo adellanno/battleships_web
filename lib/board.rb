@@ -11,6 +11,30 @@ class Board
 		end
 	end
 
+	def html_grid
+		curses_grid = " 1234567890<br>"
+		[*"A".."J"].each do |x|
+			curses_grid += x
+			[*1..10].each do |y|
+				if @grid["#{x}#{y}".to_sym].content.class == Water
+					if @grid["#{x}#{y}".to_sym].hit?
+						curses_grid += "m"
+					else
+						curses_grid += "."
+					end
+				else
+					if @grid["#{x}#{y}".to_sym].hit?
+						curses_grid += "x"
+					else
+						curses_grid += "s"
+					end
+				end
+			end
+			curses_grid += "<br>"
+		end
+		curses_grid
+	end
+
 	def place(ship, coord, orientation = :horizontally)
 		coords = [coord]
 		(ship.size - 1).times{coords << next_coord(coords.last, orientation)}
