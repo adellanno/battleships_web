@@ -1,4 +1,10 @@
 require 'sinatra/base'
+require_relative 'water'
+require_relative 'ship'
+require_relative 'player'
+require_relative 'game'
+require_relative 'cell'
+require_relative 'board'
 
 class BattleshipsWeb < Sinatra::Base
 
@@ -14,6 +20,8 @@ class BattleshipsWeb < Sinatra::Base
 
   get '/start_game' do
     @name = params[:name]
+    board = Board.new(Cell)
+    @grid = board.html_grid
     erb :start_game
   end
 

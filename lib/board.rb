@@ -12,7 +12,7 @@ class Board
 	end
 
 	def html_grid
-		curses_grid = " 1234567890<br>"
+		curses_grid = "x1234567890<br>"
 		[*"A".."J"].each do |x|
 			curses_grid += x
 			[*1..10].each do |y|
