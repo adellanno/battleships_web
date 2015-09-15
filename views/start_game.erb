@@ -1,0 +1,9 @@
+<div>
+  <% if @name != '' %>
+    Hello, <%= @name %>. Welcome to a game of Battleships.
+  <% else %>
+    You didn't enter a name. If you don't enter a name you will be called Pooface.
+    <a href= "/new_game" >New Game</a>
+  <% end %>
+
+</div>
